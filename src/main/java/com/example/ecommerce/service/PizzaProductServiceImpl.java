@@ -37,7 +37,7 @@ public class PizzaProductServiceImpl implements PizzaProductService {
     @Override
     public PizzaProduct getPizzaProduct(@Min(value = 1L, message = "Invalid product ID") long id) {
         return pizzaProductRepository
-                .findById((int) id)
+                .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pizza not found"));
     }
 
