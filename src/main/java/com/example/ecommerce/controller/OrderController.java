@@ -24,7 +24,11 @@ import java.util.stream.Collectors;
 import static com.example.ecommerce.util.Constants.API_BASE;
 
 @RestController
-@RequestMapping(API_BASE)
+@RequestMapping(
+        value = API_BASE + "/orders",
+        produces = "application/json",
+        method = { RequestMethod.POST }
+)
 public class OrderController {
 
     @Autowired
@@ -38,10 +42,10 @@ public class OrderController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    
 
     @PostMapping
     public ResponseEntity<Order> create(@RequestBody OrderForm form) {
+        System.out.println(form);
         List<OrderPizzaProductDto> formDtos = form.getPizzaProductOrders();
         validatePizzaProductsExistence(formDtos);
 
@@ -84,7 +88,7 @@ public class OrderController {
         }
     }
 
-    private static class OrderForm{
+    private static class OrderForm {
 
         private List<OrderPizzaProductDto> pizzaProductOrders;
 

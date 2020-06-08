@@ -19,6 +19,7 @@ import static com.example.ecommerce.util.Constants.API_BASE;
 @RestController
 @RequestMapping(API_BASE + "/pizzas")
 public class PizzaProductController {
+
     @Autowired
     PizzaProductServiceImpl pizzaProductServiceImpl;
 
@@ -31,8 +32,7 @@ public class PizzaProductController {
             @RequestParam(defaultValue = "0") Integer price
     ) {
         List<PizzaProduct> pizzaProducts = pizzaProductServiceImpl.getAllPizzaProducts(page, size, sort, name, price);
-        Long count = pizzaProductServiceImpl.count();
 
-        return new ResponseEntity<List<PizzaProduct>>(pizzaProducts, new HttpHeaders(), HttpStatus.OK);
+        return new ResponseEntity<>(pizzaProducts, new HttpHeaders(), HttpStatus.OK);
     }
 }
