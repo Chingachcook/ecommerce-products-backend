@@ -24,7 +24,7 @@ public class Order {
     @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
     @Valid
-    private List<OrderPizzaProduct> orderPizzaProduct = new ArrayList<>();
+    private List<OrderPizzaProduct> orderPizzaProducts = new ArrayList<>();
 
     @Transient
     public Double getTotalOrderPrice() {
@@ -33,12 +33,12 @@ public class Order {
         for (OrderPizzaProduct op : orderPizzaProductProducts) {
             sum += op.getTotalPrice();
         }
-        return sum;
+        return sum + 5;
     }
 
     @Transient
     public int getNumberOfPizzaProducts() {
-        return this.orderPizzaProduct.size();
+        return this.orderPizzaProducts.size();
     }
 
     public Long getId() {
@@ -66,10 +66,10 @@ public class Order {
     }
 
     public List<OrderPizzaProduct> getOrderPizzaProducts() {
-        return orderPizzaProduct;
+        return orderPizzaProducts;
     }
 
     public void setOrderPizzaProducts(List<OrderPizzaProduct> orderPizzaProductProducts) {
-        this.orderPizzaProduct = orderPizzaProductProducts;
+        this.orderPizzaProducts = orderPizzaProductProducts;
     }
 }

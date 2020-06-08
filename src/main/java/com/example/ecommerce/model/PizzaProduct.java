@@ -17,7 +17,6 @@ public class PizzaProduct {
     }
 
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
