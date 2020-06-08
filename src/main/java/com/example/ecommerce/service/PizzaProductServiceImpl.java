@@ -24,16 +24,13 @@ public class PizzaProductServiceImpl implements PizzaProductService {
 
     @Override
     public List<PizzaProduct> getAllPizzaProducts(Integer pageNo, Integer pageSize, String sortBy, String name, Integer price) {
-        Sort sortById = Sort.by(sortBy);
-        Sort sortByName = Sort.by((List<Sort.Order>) sortById);
-        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by((List<Sort.Order>) sortByName));
+        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy).ascending());
 
         Page<PizzaProduct> pagedResult = pizzaProductRepository.findAll(paging);
-
         if(pagedResult.hasContent()) {
             return pagedResult.getContent();
         } else {
-            return new ArrayList<PizzaProduct>();
+            return new ArrayList<>();
         }
     }
 

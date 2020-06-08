@@ -1,5 +1,7 @@
 package com.example.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -15,20 +17,19 @@ public class PizzaProduct {
     }
 
     @Id
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     @NotNull(message = "Pizza product name is required")
     @Basic(optional = false)
-    private String name;
+    public String name;
 
-    private Double price;
+    public Double price;
 
-    private Size size;
+    public Size size;
 
-    private String pictureUrl;
-
-    private Byte isDeleted;
+    public String pictureUrl;
 
     public Long getId() {
         return id;
@@ -70,19 +71,10 @@ public class PizzaProduct {
         this.pictureUrl = pictureUrl;
     }
 
-    public Byte getIsDeleted() {
-        return isDeleted;
-    }
-
-    public void setIsDeleted(Byte isDeleted) {
-        this.isDeleted = isDeleted;
-    }
-
     public PizzaProduct(String name, Double price, Size size, String pictureUrl, Byte isDeleted) {
         this.name = name;
         this.price = price;
         this.size = size;
         this.pictureUrl = pictureUrl;
-        this.isDeleted = isDeleted;
     }
 }
