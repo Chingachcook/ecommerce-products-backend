@@ -1,5 +1,7 @@
 # ecommerce-shopping-cart
 
+Here is a [DEMO](https://ecommerce-pizza.herokuapp.com/)
+
 Needed dependencies:
 * Java 1.8 or Java 11
 * Maven
